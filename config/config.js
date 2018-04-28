@@ -1,7 +1,4 @@
 module.exports = {
-  exec: {
-    'rollup-debug': 'rollup language/index.js --format iife --name "basic55" --file debug/language.js'
-  },
   rollup: {
     debug: {
       files: {
