@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015.promise", "es2017"],
+    "module": "commonjs",
+    "strict": true,
+    "importHelpers": true,
+    "target": "es2015"
+  }
+}
