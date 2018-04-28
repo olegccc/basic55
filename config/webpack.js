@@ -1,11 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const postcssImport = require('postcss-import');
 const projectPath = path.join(__dirname, '..');
-const sourcePath = path.join(projectPath, 'ui');
-const webpack = require('webpack');
 
 module.exports = function (release) {
 
