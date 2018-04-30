@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackDevConfig = require('../config/webpack.dev.config');
 
 module.exports = function(grunt) {
 
@@ -13,7 +15,8 @@ module.exports = function(grunt) {
       resolve: config.resolve,
       module: config.module,
       stats: config.stats,
-      plugins: []
+      plugins: [],
+      mode: config.release ? 'production' : 'development'
     };
 
     if (config.html) {
@@ -45,22 +48,30 @@ module.exports = function(grunt) {
 
     const compiler = webpack(compilerConfig);
 
-    compiler.run((error, stats) => {
-      if (error) {
-        grunt.log.error(error);
-        done(false);
-        return;
-      }
+    if (grunt.option('view')) {
+      const server = new WebpackDevServer(compiler, webpackDevConfig);
+      const portNumber = grunt.config('port');
+      server.listen(portNumber, function() {
+        console.log('Server started at localhost:' + portNumber);
+      });
+    } else {
+      compiler.run((error, stats) => {
+        if (error) {
+          grunt.log.error(error);
+          done(false);
+          return;
+        }
 
-      if (stats.hasErrors()) {
-        const errors = stats.toJson('errors-only');
-        grunt.log.error('Compile errors:');
-        errors.errors.forEach(function(error) { grunt.log.error(error); });
-        done(false);
-        return;
-      }
+        if (stats.hasErrors()) {
+          const errors = stats.toJson('errors-only');
+          grunt.log.error('Compile errors:');
+          errors.errors.forEach(function(error) { grunt.log.error(error); });
+          done(false);
+          return;
+        }
 
-      done();
-    });
+        done();
+      });
+    }
   });
 };
