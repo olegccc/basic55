@@ -1,4 +1,4 @@
-import {Context, Expression, Statement} from "./types";
+import {Context, Expression, Statement} from "./context";
 import {executeExpression, parseExpression} from "./expression";
 
 type LetStatement = {

@@ -1,4 +1,4 @@
-import {Context, Expression, Operation} from "./types";
+import {Context, Expression, Operation} from "./context";
 
 export type ExpressionAndLength = {
   expression: Expression;

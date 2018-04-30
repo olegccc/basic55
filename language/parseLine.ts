@@ -1,4 +1,4 @@
-import {Statement} from './types'
+import {Statement} from './context'
 import parsers from './parsers'
 
 export default function(line: string): Statement {

@@ -1,4 +1,4 @@
-import {Context, Expression} from "./types";
+import {Context, Expression} from "./context";
 import {executeExpression, getExpressionAndLength} from "./expression";
 
 type PrintStatement = {
