@@ -25,7 +25,7 @@ function ForParseHandler(variable: string, initial: string, limit: string, incre
   return {
     execute: ForExecuteHandler,
     state: {
-      variable: variable,
+      variable: variable.toLowerCase(),
       initial: Number(initial),
       limit: Number(limit),
       increment: increment !== undefined ? Number(increment) : 1

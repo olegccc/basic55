@@ -14,7 +14,7 @@ function GoSubExecuteHandler(context: Context, state: GoSubStatement) {
   context.next = state.line;
 }
 
-function GoSubParseHandler(line: string) {
+function GoSubParseHandler(line: string): GoSubConfiguration {
   return {
     state: {
       line: Number(line)

@@ -47,7 +47,7 @@ function getSingleExpressionAndLength(text: string) : ExpressionAndLength {
     return {
       length: pos,
       expression: {
-        arg1: name,
+        arg1: name.toLowerCase(),
         arg2: getFunctionArguments(text.substr(from, pos-from-1)),
         operation: Operation.FUNCTION
       }
@@ -65,7 +65,7 @@ function getSingleExpressionAndLength(text: string) : ExpressionAndLength {
     };
   }
 
-  match = text.match(/^[+-]?(\d+(\.\d*)?|\.\d+)/);
+  match = text.match(/^[+-]?(\d+(\.\d*)?|\.\d+)(E[+-]\d+)?/i);
   if (match) {
     return {
       length: match[0].length,
@@ -82,7 +82,7 @@ function getSingleExpressionAndLength(text: string) : ExpressionAndLength {
     return {
       length: match[0].length,
       expression: {
-        arg1: name,
+        arg1: name.toLowerCase(),
         operation: Operation.VARIABLE
       }
     };
@@ -120,11 +120,11 @@ function getExpressionFromList(expressions: Expression[], operations: Operation[
   }
 
   let pos = -1;
-  let priority = 0;
+  let priority = 100;
 
   for (let i = 0; i < operations.length; i++) {
     const p = getOperationPriority(operations[i]);
-    if (pos === -1 || priority > p) {
+    if (pos === -1 || priority < p) {
       pos = i;
       priority = p;
     }

@@ -17,8 +17,8 @@ function LetExecuteHandler(context: Context, state: LetStatement) {
     if (!context.arrays[state.variable]) {
       throw Error('unknown array: ' + state.variable);
     }
-    const array = state.indexes.slice(0, state.indexes.length-1).reduce((p, c) => p[c], context.arrays[state.variable]);
-    array[state.indexes[state.indexes.length-1]] = executeExpression(context, state.expression);
+    const array = state.indexes.slice(0, state.indexes.length-1).reduce((p, c) => p[c-context.indexBase], context.arrays[state.variable]);
+    array[state.indexes[state.indexes.length-1]-context.indexBase] = executeExpression(context, state.expression);
   } else {
     context.variables[state.variable] = executeExpression(context, state.expression);
   }
@@ -38,7 +38,7 @@ function LetParseHandler(value: string, text: string): LetConfiguration {
   return {
     state: {
       expression,
-      variable: value,
+      variable: value.toLowerCase(),
       indexes: arrayIndexes
     },
     execute: LetExecuteHandler

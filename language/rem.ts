@@ -1,5 +1,14 @@
-function RemHandler() {
-
+type RemConfiguration = {
+  execute: Function;
 }
 
-export default RemHandler;
+function RemExecuteHandler() {
+}
+
+function RemParseHandler() : RemConfiguration {
+  return {
+    execute: RemExecuteHandler
+  };
+}
+
+export default RemParseHandler;
