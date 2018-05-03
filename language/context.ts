@@ -1,3 +1,5 @@
+import Random from './prng'
+
 export type Statement = {
   state: any;
   execute: Function;

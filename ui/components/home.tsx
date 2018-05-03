@@ -32,11 +32,13 @@ export class HomeComponent extends React.Component<HomeComponentProps, HomeCompo
 
   render() {
     let idx = 1;
-    return <div>
-      <textarea onChange={e => this.setState({ code: e.target.value })}>{this.state.code}</textarea>
-      <input type="button" onClick={() => this.run()} value="Run!"/>
-      <div>Output:</div>
-      <div>{(this.state.output || []).map(line => <div key={idx++}>{line}</div>)}</div>
+    return <div className="page">
+      <textarea className="code" onChange={e => this.setState({ code: e.target.value })}>{this.state.code}</textarea>
+      <input className="button" type="button" onClick={() => this.run()} value="Run!"/>
+      <div className="output">
+        <div className="title">Output</div>
+        <div>{(this.state.output || []).map(line => <div key={idx++}>{line}</div>)}</div>
+      </div>
     </div>;
   }
 }

@@ -32,3 +32,5 @@ class Random {
     return (this.next() - 1) / 2147483646;
   }
 }
+
+export default Random;

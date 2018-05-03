@@ -1,0 +1,32 @@
+.layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.code {
+
+}
+
+.button {
+
+}
+
+.output {
+    .title {
+
+    }
+}
+
+.input {
+
+}

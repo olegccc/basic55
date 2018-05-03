@@ -54,7 +54,7 @@ function getSingleExpressionAndLength(text: string) : ExpressionAndLength {
     };
   }
 
-  match = text.match(/^"([^"])*"/);
+  match = text.match(/^"([^"]*)"/);
   if (match) {
     return {
       length: match[0].length,

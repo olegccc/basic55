@@ -2,7 +2,11 @@ import parseLine from './parseLine'
 import {createContext, Statement} from "./context";
 
 export function compile(code: string): Statement[] {
-  return code.split('\n').map(line => parseLine(line));
+  return code
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line)
+    .map(line => parseLine(line));
 }
 
 export function run(statements: Statement[]): string[] {
