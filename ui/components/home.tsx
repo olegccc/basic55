@@ -4,6 +4,10 @@ import {BasicStore} from "../redux";
 
 import {compile, run} from "../../language"
 
+import Code from './code'
+import Toolbar from './toolbar'
+import Results from './results'
+
 type HomeComponentProps = {};
 type HomeComponentState = {
   code?: string;
@@ -31,14 +35,10 @@ export class HomeComponent extends React.Component<HomeComponentProps, HomeCompo
   }
 
   render() {
-    let idx = 1;
     return <div className="page">
-      <textarea className="code" onChange={e => this.setState({ code: e.target.value })}>{this.state.code}</textarea>
-      <input className="button" type="button" onClick={() => this.run()} value="Run!"/>
-      <div className="output">
-        <div className="title">Output</div>
-        <div>{(this.state.output || []).map(line => <div key={idx++}>{line}</div>)}</div>
-      </div>
+      <Code/>
+      <Toolbar onClick={() => this.run()}/>
+      <Results/>
     </div>;
   }
 }
@@ -47,4 +47,4 @@ const mapStateToProps = (_: BasicStore, props: HomeComponentProps) => {
   return {};
 };
 
-export default connect<any, any, any>(mapStateToProps, {})(HomeComponent);
+export default connect(mapStateToProps, {})(HomeComponent);

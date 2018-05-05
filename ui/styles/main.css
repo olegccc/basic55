@@ -1,4 +1,15 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+}
+
 .layout {
+    flex: 1 1;
+    width: 100%;
     display: flex;
     flex-direction: row;
 }
@@ -10,11 +21,18 @@
 
 .page {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 100%;
 }
 
 .code {
+    flex: 1 1;
+    outline: none;
 
+}
+
+.results {
+    flex: 1 1;
 }
 
 .button {

@@ -1,4 +1,5 @@
 import {Context} from "./context";
+import Random from "./prng";
 
 type RandomizeConfiguration = {
   execute: Function;
